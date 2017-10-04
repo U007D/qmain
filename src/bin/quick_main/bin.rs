@@ -4,16 +4,15 @@
 #![warn(missing_debug_implementations, /*trivial_casts,*/ trivial_numeric_casts, unused_import_braces, unused_qualifications)]
 #![deny(unused_must_use, overflowing_literals)]
 
-extern crate quickstart_template;
+extern crate quick_main;
 extern crate libc;
 
-use quickstart_template::{StdError, Args};
-use quickstart_template::error::*;
+use quick_main::{StdError, Args, ErrorExt};
 #[allow(unused_imports)]
 use libc::{EXIT_SUCCESS, EXIT_FAILURE};
 
 pub fn main() {
-    match quickstart_template::run(Args::from(std::env::args_os())) {
+    match quick_main::run(Args::from(std::env::args_os())) {
         Ok(r) => r,
         Err(ref e) => {
             println!("{}", (e as &StdError).trace());

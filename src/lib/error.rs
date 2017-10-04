@@ -1,5 +1,6 @@
 use consts::*;
 use super::StdError;
+use assayer::Error as AssayerError;
 
 pub trait ErrorExt {
     fn trace(&self) -> String;
@@ -15,4 +16,13 @@ impl<'a> ErrorExt for &'a StdError {
     }
 }
 
-error_chain! {}
+impl From<AssayerError> for StdError {
+    fn from(e: AssayerError) -> Self {
+        unimplemented!()
+    }
+}
+
+error_def! Error {
+    Message { #[from] cause: Box<Error>, } => "quick_main::Error::Message",
+    Validation { #[from] cause: AssayerError, } => "quick_main::Error::Validation",
+}
