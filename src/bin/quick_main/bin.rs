@@ -4,19 +4,22 @@
 #![warn(missing_debug_implementations, /*trivial_casts,*/ trivial_numeric_casts, unused_import_braces, unused_qualifications)]
 #![deny(unused_must_use, overflowing_literals)]
 
+#[macro_use]
 extern crate quick_main;
-extern crate libc;
+main! {() -> Result<()> {
+    fn main() {
+        extern crate libc;
 
-use quick_main::{StdError, Args, ErrorExt};
-#[allow(unused_imports)]
-use libc::{EXIT_SUCCESS, EXIT_FAILURE};
+        #[allow(unused_imports)]
+        use ::libc::{EXIT_SUCCESS, EXIT_FAILURE};
+        use ::std::io::write;
 
-pub fn main() {
-    match quick_main::run(Args::from(std::env::args_os())) {
-        Ok(r) => r,
-        Err(ref e) => {
-            println!("{}", (e as &StdError).trace());
-            std::process::exit(EXIT_FAILURE);
-        },
+
+
     }
+    foo;
+    bar;
+    baz;
+    when! { baz }
+}
 }

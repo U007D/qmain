@@ -1,5 +1,5 @@
 [package]
-authors = ["brad"]
+authors = ["Brad Gibson"]
 name = "quick_main"
 version = "0.1.0"
 
@@ -10,8 +10,6 @@ path = "src/bin/quick_main/bin.rs"
 test = false
 
 [dependencies]
-assayer = "0.2.2"
-error_def = "0.3.15"
 libc = "0.2.31"
 
 [lib]
